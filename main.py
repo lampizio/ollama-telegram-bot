@@ -1,11 +1,12 @@
 from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters
+from telegram.ext import Application, MessageHandler, filters
 
 from bot import reply
+from config import Config
 
 
-def main(api_token: str) -> None:
-    application = Application.builder().token(api_token).build()
+def main() -> None:
+    application: Application = Application.builder().token(Config.api_token).build()
 
     application.add_handler(MessageHandler(
         filters.TEXT & ~filters.COMMAND, reply))
@@ -14,6 +15,6 @@ def main(api_token: str) -> None:
 
 
 if __name__ == "__main__":
-    api_token = "YOUR_API_TOKEN_HERE"
+    Config.load_credentials()
 
-    main(api_token)
+    main()
