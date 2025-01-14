@@ -6,6 +6,9 @@ from config import Config
 
 
 def main() -> None:
+    """
+    This function starts bot.
+    """
     application: Application = Application.builder().token(Config.api_token).build()
 
     application.add_handler(MessageHandler(

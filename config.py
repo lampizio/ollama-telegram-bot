@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 
 
 class Config:
+    """
+    This class includes configuration variables.
+    """
     api_token: str = ""
     llama_model: str = ""
 
